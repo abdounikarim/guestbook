@@ -10,7 +10,9 @@ runtime:
         - sodium
         - ctype
         - iconv
+        - amqp
         - redis
+        - xsl
         
 
 build:

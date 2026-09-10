@@ -16,6 +16,7 @@
 
     <div class="row">
         <div class="col-12 col-lg-8">
+            <turbo-frame id="comments" data-turbo-action="advance">
             {% if comments|length > 0 %}
                 {% for comment in comments %}
                     <div class="media shadow border rounded-3 p-3 mb-4">
@@ -56,6 +57,7 @@
                     No comments have been posted yet for this conference.
                 </div>
             {% endif %}
+            </turbo-frame>
         </div>
         <div class="col-12 col-lg-4">
             <div class="bg-light shadow border rounded-3 p-4">

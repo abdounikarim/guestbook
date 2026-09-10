@@ -26,6 +26,10 @@ class CommentType extends AbstractType
             ->add('photo', FileType::class, [
                 'required' => false,
                 'mapped' => false,
+                'attr' => [
+                    'data-controller' => 'photo-preview',
+                    'data-action' => 'change->photo-preview#show',
+                ],
                 'constraints' => [
                     new Image(maxSize: '1024k')
                 ],

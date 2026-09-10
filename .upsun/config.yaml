@@ -15,6 +15,9 @@ services:
                 type: string
                 path: config.vcl
 
+    files:
+        type: network-storage:2.0
+
 applications:
     app:
         source:
@@ -50,7 +53,7 @@ applications:
         mounts:
             "/var/cache": { source: instance, source_path: var/cache }
             "/var/share": { source: storage, source_path: var/share }
-            "/public/uploads": { source: storage, source_path: uploads }
+            "/public/uploads": { source: service, service: files, source_path: uploads }
             
 
         relationships:

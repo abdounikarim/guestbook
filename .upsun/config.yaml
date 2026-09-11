@@ -18,6 +18,9 @@ services:
     files:
         type: network-storage:2.0
 
+    rediscache:
+        type: redis:8.0
+
 applications:
     app:
         source:
@@ -33,6 +36,7 @@ applications:
                 - iconv
                 - mbstring
                 - pdo_pgsql
+                - redis
                 - sodium
                 - xsl
 
@@ -58,6 +62,7 @@ applications:
 
         relationships:
             database: "database:postgresql"
+            redis: "rediscache:redis"
 
         hooks:
             build: |

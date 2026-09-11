@@ -4,7 +4,7 @@ framework:
 
     # Note that the session will be started ONLY if you read or write from it.
     session:
-        handler_id: '%env(resolve:DATABASE_URL)%'
+        handler_id: '%env(REDIS_URL)%'
 
     esi: true
     #fragments: true

@@ -18,7 +18,7 @@ class ConferenceControllerTest extends PantherTestCase
     public function testIndex(): void
     {
         $client = static::createPantherClient(['external_base_uri' => rtrim($_SERVER['SYMFONY_PROJECT_DEFAULT_ROUTE_URL'], '/')]);
-        $client->request('GET', '/');
+        $client->request('GET', '/en/');
 
         $this->assertSelectorTextContains('h2', 'Give your feedback');
     }
@@ -30,7 +30,7 @@ class ConferenceControllerTest extends PantherTestCase
         $berlin = ConferenceFactory::createOne(['city' => 'Berlin', 'year' => '2021', 'isInternational' => false]);
         CommentFactory::createOne(['conference' => $berlin]);
         
-        $client->request('GET', '/conference/berlin-2021');
+        $client->request('GET', '/en/conference/berlin-2021');
         $client->submitForm('Submit', [
             'comment[author]' => 'Fabien',
             'comment[text]' => 'Some feedback from an automated functional test',
@@ -56,7 +56,7 @@ class ConferenceControllerTest extends PantherTestCase
         ConferenceFactory::createOne(['city' => 'Paris', 'year' => '2020', 'isInternational' => false]);
         CommentFactory::createOne(['conference' => $amsterdam]);
         
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
         
         $this->assertCount(2, $crawler->filter('h4'));
         
@@ -65,6 +65,6 @@ class ConferenceControllerTest extends PantherTestCase
         $this->assertPageTitleContains('Amsterdam');
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h2', 'Amsterdam 2019');
-        $this->assertSelectorExists('div:contains("There are 1 comments")');
+        $this->assertSelectorExists('div:contains("There is one comment")');
     }
 }

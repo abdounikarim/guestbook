@@ -22,6 +22,7 @@
         "symfony/ai-agent": "^0.13.0",
         "symfony/ai-bundle": "^0.13.0",
         "symfony/ai-open-ai-platform": "^0.13.0",
+        "symfony/amqp-messenger": "8.1.*",
         "symfony/asset": "8.1.*",
         "symfony/asset-mapper": "8.1.*",
         "symfony/console": "8.1.*",

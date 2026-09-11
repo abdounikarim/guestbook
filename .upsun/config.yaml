@@ -21,6 +21,10 @@ services:
     rediscache:
         type: redis:8.0
 
+    queue:
+        type: rabbitmq:4.2
+        size: S
+
 applications:
     app:
         source:
@@ -30,6 +34,7 @@ applications:
 
         runtime:
             extensions:
+                - amqp
                 - apcu
                 - blackfire
                 - ctype
@@ -63,6 +68,7 @@ applications:
         relationships:
             database: "database:postgresql"
             redis: "rediscache:redis"
+            rabbitmq: "queue:rabbitmq"
 
         hooks:
             build: |
